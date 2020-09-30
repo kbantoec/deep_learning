@@ -6,21 +6,22 @@ from typing import Union, List
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from time import time
 from datetime import datetime
+import warnings
 
 
 def normabspath(basedir: str, filename: str):
     return os.path.normpath(os.path.join(basedir, filename))
 
 
-def show_ellapsed_time(start: float, end: float) -> None:
-    ellapsed_secs: int = round(end - start)
+def show_elapsed_time(start: float, end: float) -> None:
+    elapsed_secs: int = round(end - start)
 
-    if ellapsed_secs > 59:
-        minutes: int = int(ellapsed_secs / 60)
-        seconds_msg: str = ' and ' + str(ellapsed_secs % 60) + ' seconds' if ellapsed_secs % 60 != 0 else ''
-        print(f"Ellapsed time: {minutes} {'minutes' if minutes > 1 else 'minute'}{seconds_msg}")
+    if elapsed_secs > 59:
+        minutes: int = int(elapsed_secs / 60)
+        seconds_msg: str = ' and ' + str(elapsed_secs % 60) + ' seconds' if elapsed_secs % 60 != 0 else ''
+        print(f"Elapsed time: {minutes} {'minutes' if minutes > 1 else 'minute'}{seconds_msg}")
     else:
-        print(f"Ellapsed time: {ellapsed_secs} seconds")
+        print(f"Elapsed time: {elapsed_secs} seconds")
 
 
 def lagged_features(features_tensor: ndarray, num_lags: int, fill_value: Union[int, float] = np.nan) -> ndarray:
@@ -66,16 +67,18 @@ def single_autocorr(series: ndarray, num_lags: int) -> float64:
     numpy.float64
         The serial correlation of the series.
     """
+    with warnings.catch_warnings():
+        x0 = series[num_lags:]
+        x1 = series[:-num_lags]
 
-    x0 = series[num_lags:]
-    x1 = series[:-num_lags]
-    mu0 = np.nanmean(x0)
-    mu1 = np.nanmean(x1)
-    dx0 = x0 - mu0
-    dx1 = x1 - mu1
-    sigma0 = np.sqrt(np.nansum(dx0 * dx0))
-    sigma1 = np.sqrt(np.nansum(dx1 * dx1))
-    return np.nansum(dx0 * dx1) / (sigma0 * sigma1) if (sigma0 * sigma1) != 0 else 0
+        warnings.simplefilter("ignore", category=RuntimeWarning)
+        mu0 = np.mean(x0)
+        mu1 = np.mean(x1)
+        dx0 = x0 - mu0
+        dx1 = x1 - mu1
+        sigma0 = np.sqrt(np.sum(dx0 * dx0))
+        sigma1 = np.sqrt(np.sum(dx1 * dx1))
+        return np.sum(dx0 * dx1) / (sigma0 * sigma1) if (sigma0 * sigma1) != 0 else 0
 
 
 def batch_autocorr(time_series: ndarray, num_lags: int, lookback_periods: int, verbose: bool = True) -> ndarray:
@@ -246,7 +249,7 @@ def get_batch(time_series: DataFrame,
 
     if show_runtime:
         end_time: float = time()
-        show_ellapsed_time(start_time, end_time)
+        show_elapsed_time(start_time, end_time)
 
     return batch, target
 
@@ -259,8 +262,25 @@ def generate_batches(time_series: DataFrame,
                      show_runtime: bool = True):
     """Generate batches.
 
+    Parameters
+    ----------
+    time_series : pandas.DataFrame
+        Time series DataFrame with samples as rows and dates as columns.
+
+    global_features : pandas.DataFrame or None
+        Include other features.
+
     batch_size : int, optional
-        The height of the rolling cube.
+        The height of the rolling "cube".
+
+    lookback_periods : int, optional
+        Window size. Specifies how much periods the window has.
+
+    lags: tuple of int or None
+        Include period lags as features.
+
+    show_runtime: bool, optional
+        Print message of elapsed time.
     """
 
     # N is the number of samples
