@@ -7,6 +7,7 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from time import time
 from datetime import datetime
 import warnings
+from numba import jit
 
 
 def normabspath(basedir: str, filename: str):
@@ -308,3 +309,45 @@ def generate_batches(time_series: DataFrame,
                              show_runtime=show_runtime)
 
             yield X, y
+
+
+@jit(nopython=True)
+def lagged_features_numba(features_tensor: ndarray,
+                          num_lags: int,
+                          fill_value: Union[int, float] = np.nan) -> ndarray:
+    N: int = features_tensor.shape[0]
+    T: int = features_tensor.shape[1]
+    D: int = features_tensor.shape[2]
+    filled = np.full((N, num_lags, D), fill_value)
+    extended_feature = np.concatenate((filled, features_tensor), axis=1)
+    return extended_feature[:, :T]
+
+
+@jit(nopython=True)
+def single_autocorr_numba(series: ndarray, num_lags: int) -> float64:
+    x0 = series[num_lags:]
+    x1 = series[:-num_lags]
+    mu0 = np.nanmean(x0)
+    mu1 = np.nanmean(x1)
+    dx0 = x0 - mu0
+    dx1 = x1 - mu1
+    sigma0 = np.sqrt(np.nansum(dx0 * dx0))
+    sigma1 = np.sqrt(np.nansum(dx1 * dx1))
+    return np.nansum(dx0 * dx1) / (sigma0 * sigma1) if (sigma0 * sigma1) != 0 else 0
+
+
+@jit(nopython=True)
+def batch_autocorr_numba(time_series: ndarray, num_lags: int, lookback_periods: int) -> ndarray:
+    N = time_series.shape[0]
+
+    collect_autocorrs: List[float64] = []
+    for i in range(N):
+        r = single_autocorr_numba(time_series[i, :], num_lags)
+        collect_autocorrs.append(r)
+
+    autocorrs: ndarray = np.array(collect_autocorrs)  # Shape: (N,)
+    autocorrs = np.repeat(autocorrs, lookback_periods)  # (Nxlookback_periods, )
+    autocorrs = autocorrs.reshape(-1, lookback_periods)  # (N, lookback_periods)
+    autocorrs = np.expand_dims(autocorrs, -1)  # Shape: (N, lookback_periods, 1)
+
+    return autocorrs
