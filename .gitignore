@@ -3,3 +3,5 @@ venv/
 __pycache__/
 .ipynb_checkpoints/
 tsa/data/
+tf2/out/
+tf2/data/
