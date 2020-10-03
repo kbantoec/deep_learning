@@ -13,3 +13,6 @@ Deep Learning (DL) case studies.
 3. [Basics of TensorFlow 2.0](https://github.com/kbantoec/deep_learning/blob/master/tf2/tensorflow2.ipynb)
 4. [Linear Models](https://github.com/kbantoec/deep_learning/blob/master/tf2/linear_models.ipynb)
 
+## RNN
+
+1. [Simple RNN for forecasting a sine function](https://github.com/kbantoec/deep_learning/blob/master/rnn/simple_rnn.ipynb)
