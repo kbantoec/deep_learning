@@ -15,4 +15,5 @@ Deep Learning (DL) case studies.
 
 ## RNN
 
-1. [Simple RNN for forecasting a sine function](https://github.com/kbantoec/deep_learning/blob/master/rnn/simple_rnn.ipynb)
+1. [Simple RNN for forecasting a sine function](https://github.com/kbantoec/deep_learning/blob/master/rnn/simple_rnn.ipynb): This notebook demonstrates the importance of doing sanity checks when building models in deep learning.
+
