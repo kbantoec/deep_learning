@@ -1,7 +1,7 @@
 # Deep Learning
 Deep Learning (DL) case studies.
 
-## Time Series Analysis / Sequential data modeling:
+## Time Series Analysis / Sequential data modeling
 
 1. [Understandig time series](https://github.com/kbantoec/deep_learning/blob/master/tsa/understanding_time_series.ipynb)
    * In this notebook we create a batch generator object in order to forecast with neural networks. Meaning that we can feed into a deep learning model when training it. We also touch on the following topics: Fast Fourier Transformations, serial correlation, median forecasting, and ARIMA models. This notebook are my notes from chapter 4 of the following reference: Klaas, J. (2019). *Machine learning for finance: principles and practice for financial insiders*. Packt Publishing Ltd.
@@ -18,4 +18,5 @@ Deep Learning (DL) case studies.
 ## RNN
 
 1. [Simple RNN for forecasting a sine function](https://github.com/kbantoec/deep_learning/blob/master/rnn/simple_rnn.ipynb): This notebook demonstrates the importance of doing sanity checks when building models in deep learning.
+2. [Non linear LSTM](https://github.com/kbantoec/deep_learning/blob/master/rnn/lstm_nonlinear.ipynb)
 
