@@ -5,3 +5,4 @@ __pycache__/
 tsa/data/
 tf2/out/
 tf2/data/
+rnn/out/
