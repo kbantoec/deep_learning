@@ -4,7 +4,7 @@ Deep Learning (DL) case studies.
 ## Time Series Analysis / Sequential data modeling:
 
 1. [Understandig time series](https://github.com/kbantoec/deep_learning/blob/master/tsa/understanding_time_series.ipynb)
-   * In this notebook we create a batch generator object in order to forecast with neural networks. Meaning that we can feed into a deep learning model when training it. We also touch on the following topics: Fast Fourier Transformations, serial correlation, median forecasting, and ARIMA models.
+   * In this notebook we create a batch generator object in order to forecast with neural networks. Meaning that we can feed into a deep learning model when training it. We also touch on the following topics: Fast Fourier Transformations, serial correlation, median forecasting, and ARIMA models. This notebook are my notes from chapter 4 of the following reference: Klaas, J. (2019). *Machine learning for finance: principles and practice for financial insiders*. Packt Publishing Ltd.
 2. [Autoregressive model with TF2.3.1](https://github.com/kbantoec/deep_learning/blob/master/tf2/autoregressive_model.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kbantoec/deep_learning/blob/master/tf2/autoregressive_model.ipynb)
    * In this notebook we generate synthetic data from a sine function to test how well an autoregressive model predicts multiple steps ahead. We show the wrong way and the right way of forecasting. Hence, understanding the implications of accidentally incorporating look-ahead bias in the multi-step forecast. This notebook are my notes from the *"Tensorflow 2.0: Deep Learning and Artificial Intelligence"* course of Udemy.
 
