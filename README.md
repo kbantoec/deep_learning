@@ -19,4 +19,5 @@ Deep Learning (DL) case studies.
 
 1. [Simple RNN for forecasting a sine function](https://github.com/kbantoec/deep_learning/blob/master/rnn/simple_rnn.ipynb): This notebook demonstrates the importance of doing sanity checks when building models in deep learning.
 2. [Non linear LSTM](https://github.com/kbantoec/deep_learning/blob/master/rnn/lstm_nonlinear.ipynb)
+   * In this notebook we will demystify LSTM comparing it to an AR (linear) model and a Simple RNN model. Throughout this notebook we are going to see that LSTMs are not magic and that they are not necessarily better at everything compared to the Simple RNN. These are my notes from the *"Tensorflow 2.0: Deep Learning and Artificial Intelligence"* course of Udemy.
 
