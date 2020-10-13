@@ -16,6 +16,7 @@ Deep Learning (DL) case studies.
 4. [Linear Models](https://github.com/kbantoec/deep_learning/blob/master/tf2/linear_models.ipynb)
 5. [Classification problems with Deep Learning](https://github.com/kbantoec/deep_learning/blob/master/tf2/classification.ipynb)
    * In this notebook, we will see how to solve binary, multi-class, and multi-label problems with neural networks.
+   * Tags: `EarlyStopping`, `ModelCheckpoint`, `train_test_split`, `to_categorical`, `Sequential`, `Dense`
 
 ## RNN
 
