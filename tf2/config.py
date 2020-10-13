@@ -9,5 +9,6 @@ def normabspath(basedir: str, filename: str):
 dirname: str = os.path.dirname(__file__)
 
 datapaths = {'banknotes': normabspath(dirname, 'data/banknotes.csv'),
-             'darts': normabspath(dirname, 'data/darts.csv')}
+             'darts': normabspath(dirname, 'data/darts.csv'),
+             'irrigation_machine': normabspath(dirname, 'data/irrigation_machine.csv')}
 
