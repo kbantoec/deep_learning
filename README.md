@@ -14,6 +14,8 @@ Deep Learning (DL) case studies.
 2. [Linear Regression with TF2.3](https://github.com/kbantoec/deep_learning/blob/master/tf2/linear_regression.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/kbantoec/deep_learning/master?filepath=tf2%2Flinear_regression.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kbantoec/deep_learning/blob/master/tf2/linear_regression.ipynb)
 3. [Basics of TensorFlow 2.0](https://github.com/kbantoec/deep_learning/blob/master/tf2/tensorflow2.ipynb)
 4. [Linear Models](https://github.com/kbantoec/deep_learning/blob/master/tf2/linear_models.ipynb)
+   * How to build, solve and make predictions with models in TensorFlow 2. We will focus on a simple linear regression model and will try to predict housing prices. We will load and manipulate data, construct loss functions, perform minimization, make predictions, and reduce resource use with batch training.
+   * Tags: `tensorflow.Variable`, `tensorflow.keras.losses.mae`, `tensorflow.keras.losses.mse`, `tensorflow.keras.optimizers.Adam`
 5. [Classification problems with Deep Learning](https://github.com/kbantoec/deep_learning/blob/master/tf2/classification.ipynb)
    * In this notebook, we will see how to solve binary, multi-class, and multi-label problems with neural networks.
    * Tags: `tensorflow.keras.callbacks.EarlyStopping`, `tensorflow.keras.callbacks.ModelCheckpoint`, `sklearn.model_selection.train_test_split`, `tensorflow.keras.utils.to_categorical`, `tensorflow.keras.models.Sequential`, `tensorflow.keras.layers.Dense`, `pandas.Categorical`, `seaborn.pairplot`
