@@ -19,6 +19,12 @@ Deep Learning (DL) case studies.
 5. [Classification problems with Deep Learning](https://github.com/kbantoec/deep_learning/blob/master/tf2/classification.ipynb)
    * In this notebook, we will see how to solve binary, multi-class, and multi-label problems with neural networks.
    * Tags: `tensorflow.keras.callbacks.EarlyStopping`, `tensorflow.keras.callbacks.ModelCheckpoint`, `sklearn.model_selection.train_test_split`, `tensorflow.keras.utils.to_categorical`, `tensorflow.keras.models.Sequential`, `tensorflow.keras.layers.Dense`, `pandas.Categorical`, `seaborn.pairplot`
+6. [ResNet50](https://github.com/kbantoec/deep_learning/blob/master/tf2/resnet50.ipynb)
+   * Here I provide an example on how to use the pre-trained ResNet50 model.
+   * Libraries: 
+     * From `tensorflow.keras.applications.resnet50` imported `ResNet50`, `decode_predictions`, `preprocess_input`
+     * From `tensorflow.keras.preprocessing` imported `image`
+     * From `numpy` used `expand_dims`
 
 ## RNN
 
