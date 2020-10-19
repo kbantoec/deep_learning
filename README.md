@@ -25,6 +25,9 @@ Deep Learning (DL) case studies.
      * From `tensorflow.keras.applications.resnet50` imported `ResNet50`, `decode_predictions`, `preprocess_input`
      * From `tensorflow.keras.preprocessing` imported `image`
      * From `numpy` used `expand_dims`
+7. [Is Loki a border collie?](https://github.com/kbantoec/deep_learning/blob/master/tf2/cnn_loki.ipynb)
+   * This is a fun project in which I pass images of my border collie to the ResNet50 convolutional neural network to observe the breed it predicts.
+   * Tags: `tensorflow.keras.applications.resnet50.ResNet50`
 
 ## RNN
 
