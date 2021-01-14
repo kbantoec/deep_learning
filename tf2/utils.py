@@ -1,10 +1,27 @@
+from itertools import cycle
+import sys
+
+from IPython.display import display
+import numpy as np
+import pandas as pd
 import tensorflow as tf
 from tensorflow.keras.applications.resnet50 import ResNet50, decode_predictions, preprocess_input
 from tensorflow.keras.preprocessing import image
-from IPython.display import display
 
-import numpy as np
-import pandas as pd
+colors = {'green': '#59C899', 
+          'blue': '#6370F1', 
+          'orange': '#F3A467', 
+          'purple': '#A16AF2', 
+          'light_blue': '#5BCCC7', 
+          'red': '#DF6046'}
+
+cmap = cycle(colors.values())
+
+
+def print_nb_info():
+    print(sys.version)
+    print(f"TensorFlow version: {tf.__version__}")
+    print(f"TensorFlow GPU: {tf.config.list_physical_devices('GPU')}")
 
 
 class MyResNet50:
